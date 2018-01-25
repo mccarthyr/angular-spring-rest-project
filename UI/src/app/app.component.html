@@ -1,0 +1,25 @@
+<h1>{{title}}</h1>
+
+<nav>
+	<a routerLink = "/dashboard">Dashboard</a>
+	<a routerLink = "/heroes">Heroes</a>
+</nav>
+
+<router-outlet></router-outlet>
+
+<app-messages></app-messages>
+
+<!--
+	Replaced <app-heroes></app-heroes> with 
+	<router-outlet></router-outlet>
+	when the router module was created.
+	This was removed as will only display the 
+	HeroesComponent when the user navigates to it.
+
+ 	The 'routerLink' is the selector for the 
+ 	RouterLink directive that turns user clicks
+ 	into router navigations. It's another of the
+ 	public directives in the RouterModule.
+
+	-->
+
