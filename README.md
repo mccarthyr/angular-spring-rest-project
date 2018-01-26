@@ -4,7 +4,7 @@
 
 Pre-installed Requirements: Java 1.8+, Maven, Node.js, Node Package Manager (NPM), MySQL.
 
-### Set-up - (*requires a few initialisation commands for both the Angular and Spring-Boot side*)
+### Set-up: (*requires a few initialisation commands for both the Angular and Spring-Boot side*)
 
 Go to the directory where you want to install the project and then run the following commands:
 ```bash
@@ -18,7 +18,7 @@ From this location you need to edit the src/main/resource/application.properties
 ```shell
 mvn install
 ```
-### Check UI and API are working - 
+### Check UI and API are working: 
 
 **UI**
 
