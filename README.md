@@ -26,7 +26,7 @@ Go to angular-spring-rest-project/UI and issue the command:
 ```shell
 ng serve
 ```
-Then in your browser go to: localhost:4200
+Then in your browser go to: ***localhost:4200***
 
 **API**
 
@@ -34,5 +34,5 @@ Go to angular-spring-rest-project/API/hero and issue the command:
 ```sh
 mvn spring-boot:run
 ```
-Then in your brwoser go to: localhost:8080
+Then in your brwoser go to: ***localhost:8080***
 
