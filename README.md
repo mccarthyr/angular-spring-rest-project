@@ -21,6 +21,7 @@ mvn install
 ### Check UI and API are working - 
 
 **UI**
+
 Go to angular-spring-rest-project/UI and issue the command:
 ```shell
 ng serve
@@ -28,6 +29,7 @@ ng serve
 Then in your browser go to: http://localhost:4200
 
 **API**
+
 Go to angular-spring-rest-project/API/hero and issue the command:
 ```sh
 mvn spring-boot:run
