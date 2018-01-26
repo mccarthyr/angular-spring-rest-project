@@ -18,7 +18,7 @@ From this location you need to edit the src/main/resource/application.properties
 ```shell
 mvn install
 ```
-### Check UI and API are working: 
+### Verify UI & API: 
 
 **UI**
 
