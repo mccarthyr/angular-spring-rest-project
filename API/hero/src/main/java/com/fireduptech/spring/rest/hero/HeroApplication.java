@@ -17,9 +17,11 @@ public class HeroApplication {
 
         ApplicationContext applicationContext = SpringApplication.run( HeroApplication.class, args );
 
+        /*
         for ( String name: applicationContext.getBeanDefinitionNames() ) {
             System.out.println( name );
         }
+        */
     }
 
 
