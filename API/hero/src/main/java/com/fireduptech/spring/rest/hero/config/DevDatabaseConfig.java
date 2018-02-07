@@ -1,5 +1,11 @@
 package com.fireduptech.spring.rest.hero.config;
 
+/*
+*** NOTE ***
+CURRENTLY NOT USING THIS CLASS AS UTILISING THE INHERITANCE AVAILABLE THROUGH
+SETTING MULTIPLE PROFILE SPECIFIC APPLICATION PROPERTY FILES.
+
+
 import com.fireduptech.spring.rest.hero.DatabaseConfig;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -13,6 +19,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+
 
 @Configuration
 @Profile( {"development", "default"} )
@@ -34,8 +41,6 @@ public class DevDatabaseConfig extends DatabaseConfig {
     @Bean( destroyMethod = "close")
     public DataSource dataSource() {
 
-        System.out.print("*** ====> USING THIS DEV DATA SOURCE METHOD INSTEAD ====== ****");
-
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName( driverClass );
         dataSource.setUrl( url );
@@ -48,3 +53,4 @@ public class DevDatabaseConfig extends DatabaseConfig {
 
 
 }
+*/

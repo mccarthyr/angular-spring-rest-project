@@ -1,5 +1,14 @@
 package com.fireduptech.spring.rest.hero;
 
+/*
+*** NOTE ***
+CURRENTLY NOT USING THIS CLASS AS UTILISING THE INHERITANCE AVAILABLE THROUGH
+SETTING MULTIPLE PROFILE SPECIFIC APPLICATION PROPERTY FILES.
+ALSO THE JPA AUTO-CONFIGURATION DEFAULTS ARE SUFFICIENT FOR NOW SO @BEAN
+"LocalContainerEntityManagerFactoryBean" DEFINED BELOW IS BEEN KEPT FOR
+CODE CONFIGURATION REFERENCE PURPOSES...
+
+
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
@@ -28,6 +37,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories( basePackages = "com.fireduptech.spring.rest.hero.repository")
 public class DatabaseConfig {
 
+
     @Autowired
     private Environment env;
 
@@ -45,10 +55,9 @@ public class DatabaseConfig {
     }
 
 
+
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory( DataSource dataSource ) {
-
-        System.out.print("*** ====> NOTE NOTE NOTE USING HERE FOR JPA IN PARENT! ====== ****");
 
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactory.setDataSource( dataSource );
@@ -70,3 +79,5 @@ public class DatabaseConfig {
     }
 
 }
+
+*/
