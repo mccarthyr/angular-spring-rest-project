@@ -12,6 +12,7 @@ import com.fireduptech.spring.rest.hero.service.AthleteAccountService;
 import com.fireduptech.spring.rest.hero.domain.AthleteAccount;
 
 
+
 /**
  *  - DEVELOPMENT NOTES -
  * Example use from command line - when on development database
@@ -20,6 +21,32 @@ import com.fireduptech.spring.rest.hero.domain.AthleteAccount;
  * curl -GET 'localhost:8080/athleteAccount?acAction=viewByJpa&athleteFirstName=RichardXXX'
  * curl -GET 'localhost:8080/athleteAccount?acAction=viewByIdJpa&athleteAccountIdJpa=35'
  */
+/*
+sudo curl -i -X POST -d username=athlete1 -d password=test  -c /opt/cookies.txt http://localhost:8080/springRestApi/login
+
+sudo curl -i -X GET -b /opt/cookies.txt http://localhost:8080/springRestApi/api/athleteAccount/list
+
+sudo curl -i -X GET -b /opt/cookies.txt http://localhost:8080/springRestApi/api/logout
+
+sudo curl -i -X GET -b /opt/cookies.txt 'http://localhost:8080/springRestApi/api/athleteAccount?acAction=view&athleteAccountId=34'
+
+ */
+
+// 1e5aa5fa-dfcb-4e0f-91fd-7ba37d8a4f60
+/*
+THESE WORK
+sudo curl -i -X POST -d username=user -d password=1e5aa5fa-dfcb-4e0f-91fd-7ba37d8a4f60  -c /opt/cookies.txt http://localhost:8080/login
+
+sudo curl -i -X GET -b /opt/cookies.txt 'localhost:8080/athleteAccount?acAction=viewByIdJpa&athleteAccountIdJpa=35'
+
+sudo curl -i -X GET -b /opt/cookies.txt 'localhost:8080/logout'
+
+
+sudo curl -i -X POST -d username=athlete1 -d password=test  -c /opt/cookies.txt http://localhost:8080/login
+
+
+*/
+
 
 
 @Controller
@@ -28,6 +55,14 @@ public class AthleteAccountController {
 
     @Autowired
     private AthleteAccountService athleteAccountService;
+
+
+    @RequestMapping( value = "/richard", method = RequestMethod.GET )
+    public ResponseEntity<String> getName() {
+        return new ResponseEntity<String>( "richard", HttpStatus.OK );
+    }
+
+
 
 
     @RequestMapping( params = "acAction=view", method = RequestMethod.GET )

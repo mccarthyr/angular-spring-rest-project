@@ -8,6 +8,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//@EnableWebSecurity
+
 
 @RestController
 @SpringBootApplication
@@ -30,5 +33,6 @@ public class HeroApplication {
 	    return "Hello World!";
     }
 
-}
 
+
+}
