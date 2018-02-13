@@ -1,12 +1,13 @@
 package com.fireduptech.spring.rest.hero.config;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+import javax.sql.DataSource;
+
 import org.springframework.cache.ehcache.EhCacheFactoryBean;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.acls.AclPermissionCacheOptimizer;
@@ -27,12 +28,30 @@ import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.sql.DataSource;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 
 
 @Configuration
 @EnableGlobalMethodSecurity( prePostEnabled = true, securedEnabled = true )
+@PropertySource( "classpath:/application-development.properties" )
 public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
+
+    private String driverClass;
+
+    private String url;
+
+    private String username;
+
+    private String password;
+
+    @Primary
+    @Bean( name = "dataSource")
+    @ConfigurationProperties( prefix = "spring.datasource")
+    public DataSource dataSource() {
+        return DataSourceBuilder.create().build();
+    }
 
 
     @Override
@@ -73,18 +92,6 @@ public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
     }
 
 
-    @Bean( name = "myDS")
-    public DataSource dataSource() {
-
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName( "com.mysql.cj.jdbc.Driver" );
-        dataSource.setUrl( "jdbc:mysql://localhost:3306/java_spring_angular_rest_security_acl2" );
-        dataSource.setUsername( "root" );
-        dataSource.setPassword( "alphax" );
-
-        return dataSource;
-    }
-
     @Bean
     public EhCacheBasedAclCache aclCache() {
         return new EhCacheBasedAclCache(aclEhCacheFactoryBean().getObject(), permissionGrantingStrategy(), aclAuthorizationStrategy());
@@ -107,7 +114,7 @@ public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
 
     @Bean
     public LookupStrategy lookupStrategy() {
-        return new BasicLookupStrategy(dataSource(), aclCache(), aclAuthorizationStrategy(), permissionGrantingStrategy());
+        return new BasicLookupStrategy( dataSource(), aclCache(), aclAuthorizationStrategy(), permissionGrantingStrategy() );
     }
 
     @Bean
@@ -137,12 +144,14 @@ public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
     @Bean( name = "myAclService")
     public JdbcMutableAclService aclService() {
 
-        JdbcMutableAclService jdbcMutableAclService =  new JdbcMutableAclService(dataSource(), lookupStrategy(), aclCache());
+        JdbcMutableAclService jdbcMutableAclService =  new JdbcMutableAclService( dataSource(), lookupStrategy(), aclCache() );
         jdbcMutableAclService.setClassIdentityQuery( "SELECT @@IDENTITY" );
         jdbcMutableAclService.setSidIdentityQuery( "SELECT @@IDENTITY" );
 
         return jdbcMutableAclService;
     }
+
+
 
 }
 
