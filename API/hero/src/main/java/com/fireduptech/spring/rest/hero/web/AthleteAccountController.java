@@ -32,10 +32,10 @@ sudo curl -i -X GET -b /opt/cookies.txt 'http://localhost:8080/springRestApi/api
 
  */
 
-// 1e5aa5fa-dfcb-4e0f-91fd-7ba37d8a4f60
+// db154122-93e7-4812-a115-0fe3af19ce47
 /*
 THESE WORK
-sudo curl -i -X POST -d username=user -d password=1e5aa5fa-dfcb-4e0f-91fd-7ba37d8a4f60  -c /opt/cookies.txt http://localhost:8080/login
+sudo curl -i -X POST -d username=user -d password=db154122-93e7-4812-a115-0fe3af19ce47  -c /opt/cookies.txt http://localhost:8080/login
 
 sudo curl -i -X GET -b /opt/cookies.txt 'localhost:8080/athleteAccount?acAction=viewByIdJpa&athleteAccountIdJpa=35'
 
